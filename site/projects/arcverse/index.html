@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<style>html{background:#090a0c;color:#eceef1}</style>
+<title>ArcVerse: Infinite Battler - D6 Studios</title>
+<meta name="description" content="ArcVerse: Infinite Battler is an anime card battler for Roblox by D6 Studios, currently in development.">
+<link rel="canonical" href="http://d6studio.uk/projects/arcverse/">
+<meta name="theme-color" content="#090a0c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="D6 Studios">
+<meta property="og:title" content="ArcVerse: Infinite Battler - D6 Studios">
+<meta property="og:description" content="An anime card battler for Roblox, in development at D6 Studios.">
+<meta property="og:url" content="http://d6studio.uk/projects/arcverse/">
+<meta property="og:image" content="http://d6studio.uk/assets/img/arcverse/og-arcverse.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ArcVerse: Infinite Battler key art">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/saira-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/d6.css?v=20261024c">
+<script>document.documentElement.className += ' js';</script>
+<script src="/assets/js/background.js?v=20261024c" defer></script>
+<script src="/assets/js/site.js?v=20261024c" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<canvas class="bg-canvas" id="bg" aria-hidden="true"></canvas>
+<div class="bg-grain" aria-hidden="true"></div>
+<!--HEADER-->
+<header class="site-header" id="header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="D6 Studios home">
+      <svg viewBox="0 0 240 192" aria-hidden="true"><path fill="currentColor" d="M119 0 156.8 60 33.2 137Z M163.7 71 240 192 0 192 21.7 157Z"/></svg>
+      <span class="brand-name">D6 <span>Studios</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span>
+      <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+      <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav-list">
+        <li><a href="/#studio">Studio</a></li>
+        <li><a href="/#projects" aria-current="page">Projects</a></li>
+        <li><a href="/#team">Team</a></li>
+        <li><a href="/#portfolio">Portfolio</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn btn-sm" href="https://www.roblox.com/share/g/15184250" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M5.6 1.5 22.5 5.6 18.4 22.5 1.5 18.4Z M10.4 8.3 15.7 9.6 14.4 14.9 9.1 13.6Z"/></svg>
+          Roblox<span class="sr-only"> group (opens in a new tab)</span>
+        </a>
+        <a class="btn btn-sm" href="https://discord.gg/hhEZVkwHee" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.61 1.25a18.27 18.27 0 0 0-5.49 0 12.64 12.64 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.74 19.74 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .09-.03c.46-.63.87-1.3 1.22-1.99a.08.08 0 0 0-.04-.11 13.1 13.1 0 0 1-1.87-.89.08.08 0 0 1-.01-.13c.13-.09.25-.19.37-.29a.07.07 0 0 1 .08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 0 1 .08.01c.12.1.25.2.37.29a.08.08 0 0 1 0 .13c-.6.35-1.22.65-1.87.89a.08.08 0 0 0-.04.11c.36.7.77 1.36 1.22 1.99a.08.08 0 0 0 .09.03 19.84 19.84 0 0 0 6-3.03.08.08 0 0 0 .03-.06c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42s.95-2.42 2.15-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.34-.95 2.42-2.16 2.42Z"/></svg>
+          Discord<span class="sr-only"> server (opens in a new tab)</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+<!--/HEADER-->
+
+<main id="main" class="page">
+
+  <section class="page-hero" aria-labelledby="av-title">
+    <div class="av-glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <ol class="crumbs">
+        <li><a href="/">D6 Studios</a></li>
+        <li><a href="/#projects">Projects</a></li>
+        <li aria-current="page">ArcVerse</li>
+      </ol>
+      <div class="av-hero">
+        <div>
+          <h1 id="av-title"><img src="/assets/img/arcverse/arcverse-logo-1200.webp" srcset="/assets/img/arcverse/arcverse-logo-600.webp 600w, /assets/img/arcverse/arcverse-logo-1200.webp 1200w" sizes="(max-width: 700px) 92vw, 640px" width="1200" height="365" alt="ArcVerse: Infinite Battler" fetchpriority="high"></h1>
+          <p class="lede">An anime card battler for Roblox. Collect fighters as cards, build your deck and battle through an island campaign, ranked duels, team raids and endless dungeon floors.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://discord.gg/hhEZVkwHee" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.61 1.25a18.27 18.27 0 0 0-5.49 0 12.64 12.64 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.74 19.74 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .09-.03c.46-.63.87-1.3 1.22-1.99a.08.08 0 0 0-.04-.11 13.1 13.1 0 0 1-1.87-.89.08.08 0 0 1-.01-.13c.13-.09.25-.19.37-.29a.07.07 0 0 1 .08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 0 1 .08.01c.12.1.25.2.37.29a.08.08 0 0 1 0 .13c-.6.35-1.22.65-1.87.89a.08.08 0 0 0-.04.11c.36.7.77 1.36 1.22 1.99a.08.08 0 0 0 .09.03 19.84 19.84 0 0 0 6-3.03.08.08 0 0 0 .03-.06c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42s.95-2.42 2.15-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.34-.95 2.42-2.16 2.42Z"/></svg>
+              Join the Discord for launch news<span class="sr-only"> (opens in a new tab)</span>
+            </a>
+            <a class="btn" href="#overview">Overview</a>
+          </div>
+        </div>
+        <dl class="spec">
+          <div><dt>Status</dt><dd><span class="state">In development</span><span class="note">Not released yet. The play link will appear here at launch.</span></dd></div>
+          <div><dt>Platform</dt><dd><span class="icon-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M5.6 1.5 22.5 5.6 18.4 22.5 1.5 18.4Z M10.4 8.3 15.7 9.6 14.4 14.9 9.1 13.6Z"/></svg>Roblox</span></dd></div>
+          <div><dt>Genre</dt><dd>Anime card battler</dd></div>
+          <div><dt>Studio</dt><dd>D6 Studios</dd></div>
+          <div><dt>Developers</dt><dd><a href="#credits">Alexandru (Mihai) Tunaru<br>Alamiyu</a></dd></div>
+        </dl>
+      </div>
+      <div class="av-banner ticks">
+        <div class="media wide">
+          <img src="/assets/img/arcverse/art-3-wide-800.webp" srcset="/assets/img/arcverse/art-3-wide-800.webp 800w, /assets/img/arcverse/art-3-wide-1600.webp 1600w" sizes="(max-width: 1340px) 92vw, 1280px" width="800" height="333" alt="ArcVerse key art: a white-haired fighter in a white and gold coat, arms spread in golden light" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section screen" id="overview" aria-labelledby="overview-title" data-grid-reveal>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker reveal"><span class="idx">01</span> Overview</p>
+        <h2 id="overview-title" class="reveal" data-delay="1">Overview</h2>
+      </div>
+      <div class="studio-grid">
+        <p class="statement reveal">Build a deck of anime fighters. <em>Take it into every kind of battle.</em></p>
+        <div class="prose reveal" data-delay="1">
+          <p>Open booster packs to collect character cards, then level them up and build a deck around the fighters you like best. In battle, every character brings its own skills and effects.</p>
+          <p>Your progress follows you everywhere, so the deck you build takes on the campaign, ranked matches, raids and dungeon floors alike.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section screen" id="modes" aria-labelledby="modes-title" data-grid-reveal>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker reveal"><span class="idx">02</span> Game modes</p>
+        <h2 id="modes-title" class="reveal" data-delay="1">Ways to play</h2>
+        <p class="reveal" data-delay="2">Seven modes in the current build. ArcVerse is still in development, so expect changes before launch.</p>
+      </div>
+      <div class="rail-body">
+        <ul class="mode-list">
+          <li class="reveal"><span class="label">Solo</span><h3>Campaign</h3><p>Travel from island to island, beating each island's opponents to unlock the next.</p></li>
+          <li class="reveal" data-delay="1"><span class="label">Ranked 1v1</span><h3>Arena</h3><p>Ranked one-on-one battles with your own deck, building rating across seasonal reward tracks.</p></li>
+          <li class="reveal"><span class="label">Ranked 1v1</span><h3>Strategic Warfare</h3><p>Ranked duels where card order, Leader choice and matchup planning beat account power.</p></li>
+          <li class="reveal" data-delay="1"><span class="label">Solo</span><h3>King of the Hill</h3><p>Hold the hill against random enemy teams that grow stronger with every win.</p></li>
+          <li class="reveal"><span class="label">Solo or party</span><h3>Raid Boss</h3><p>Take on a boss alone or with a party. Every hit and effect carries over to the next challenger.</p></li>
+          <li class="reveal" data-delay="1"><span class="label">Solo run</span><h3>Roguelike Arcs</h3><p>A different run every time: draft a deck from booster packs, collect relics and defeat three Act bosses.</p></li>
+          <li class="reveal"><span class="label">Solo</span><h3>Dungeons of Eternity</h3><p>Clear three battles per floor and survive the stacking challenges of each floor's final fight.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section screen" id="gallery" aria-labelledby="gallery-title" data-grid-reveal>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker reveal"><span class="idx">03</span> Gallery</p>
+        <h2 id="gallery-title" class="reveal" data-delay="1">Key art</h2>
+      </div>
+      <div class="gallery">
+        <figure class="reveal">
+          <a class="media wide" href="/assets/img/arcverse/art-1-wide-1600.webp"><img src="/assets/img/arcverse/art-1-wide-800.webp" width="800" height="333" alt="A grinning fighter with spiked red hair, surrounded by fire" loading="lazy" decoding="async"></a>
+          <figcaption><span>Key art 01</span><span>Full size</span></figcaption>
+        </figure>
+        <figure class="reveal" data-delay="1">
+          <a class="media wide" href="/assets/img/arcverse/art-2-wide-1600.webp"><img src="/assets/img/arcverse/art-2-wide-800.webp" width="800" height="333" alt="A masked figure in a black suit with clenched glowing fists, in red flame" loading="lazy" decoding="async"></a>
+          <figcaption><span>Key art 02</span><span>Full size</span></figcaption>
+        </figure>
+        <figure class="reveal" data-delay="2">
+          <a class="media wide" href="/assets/img/arcverse/art-3-wide-1600.webp"><img src="/assets/img/arcverse/art-3-wide-800.webp" width="800" height="333" alt="A white-haired fighter in a white and gold coat, arms spread in golden light" loading="lazy" decoding="async"></a>
+          <figcaption><span>Key art 03</span><span>Full size</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section screen" id="credits" aria-labelledby="credits-title" data-grid-reveal>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker reveal"><span class="idx">04</span> Credits</p>
+        <h2 id="credits-title" class="reveal" data-delay="1">Developers</h2>
+        <p class="reveal" data-delay="2">The team behind ArcVerse at D6 Studios.</p>
+      </div>
+      <div class="rail-body">
+        <div class="people cols-2">
+          <article class="person reveal">
+          <div class="avatar"><img src="/assets/img/team/papajonhy1.webp" width="64" height="64" alt="Roblox avatar of Alexandru (Mihai) Tunaru" loading="lazy" decoding="async"></div>
+          <div><h3>Alexandru (Mihai) Tunaru</h3><p class="handle">Roblox @papajonhy1</p></div>
+          <ul class="roles"><li><strong>Co-Owner</strong>D6 Studios</li><li><strong>Developer</strong>ArcVerse: Infinite Battler</li></ul>
+          <div class="links">
+            <a class="text-link" href="https://www.roblox.com/users/1435941628/profile" target="_blank" rel="noopener">Roblox<span class="sr-only"> profile of Alexandru (Mihai) Tunaru (opens in a new tab)</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none"/></svg></a>
+            <a class="text-link" href="https://github.com/Etuv2" target="_blank" rel="noopener">GitHub<span class="sr-only"> of Alexandru (Mihai) Tunaru (opens in a new tab)</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none"/></svg></a>
+          </div>
+        </article>
+          <article class="person reveal" data-delay="1">
+            <div class="avatar"><img src="/assets/img/team/alamiyu.webp" width="64" height="64" alt="Roblox avatar of Alamiyu" loading="lazy" decoding="async"></div>
+            <div><h3>Alamiyu</h3><p class="handle">Roblox @FaZe_Kenley</p></div>
+            <ul class="roles"><li><strong>Developer</strong>ArcVerse: Infinite Battler</li></ul>
+            <div class="links">
+              <a class="text-link" href="https://www.roblox.com/users/498342015/profile" target="_blank" rel="noopener">Roblox<span class="sr-only"> profile of Alamiyu (opens in a new tab)</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none"/></svg></a>
+              <a class="text-link" href="https://discord.com/users/327886167725047809" target="_blank" rel="noopener">Discord<span class="sr-only"> profile of Alamiyu (opens in a new tab)</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none"/></svg></a>
+            </div>
+          </article>
+        </div>
+        <p class="notice reveal">ArcVerse isn't playable yet. When it launches, the link will be here and on the <a href="https://discord.gg/hhEZVkwHee" target="_blank" rel="noopener">D6 Studios Discord<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!--FOOTER-->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <a class="brand" href="/" aria-label="D6 Studios home">
+        <svg viewBox="0 0 240 192" aria-hidden="true"><path fill="currentColor" d="M119 0 156.8 60 33.2 137Z M163.7 71 240 192 0 192 21.7 157Z"/></svg>
+        <span class="brand-name">D6 <span>Studios</span></span>
+      </a>
+      <nav aria-label="Footer">
+        <ul class="footer-nav">
+          <li><a href="/#studio">Studio</a></li>
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/projects/arcverse/">ArcVerse</a></li>
+          <li><a href="/#team">Team</a></li>
+          <li><a href="/#portfolio">Portfolio</a></li>
+          <li><a href="/#contact">Contact</a></li>
+          <li><a href="https://www.roblox.com/share/g/15184250" target="_blank" rel="noopener">Roblox group<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://discord.gg/hhEZVkwHee" target="_blank" rel="noopener">Discord<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-small">
+      <p>&copy; 2026 D6 Studios</p>
+      <p>Roblox is a trademark of Roblox Corporation. D6 Studios is not affiliated with Roblox Corporation.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="motion-toggle" type="button" id="motion-toggle" data-paused="false" aria-label="Pause background animation">
+  <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.2" fill="none"/></svg>
+  <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5Z" fill="currentColor"/></svg>
+  <span class="label" aria-hidden="true">Pause background</span>
+</button>
+<!--/FOOTER-->
+</body>
+</html>
