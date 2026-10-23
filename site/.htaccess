@@ -1,0 +1,9 @@
+# Revalidate content after deployments, including existing asset URLs.
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-cache"
+</IfModule>
+
+# Keep deployment bookkeeping and server configuration private.
+<FilesMatch "^(\.ftp-deploy-sync-state\.json|\.htaccess)$">
+    Require all denied
+</FilesMatch>

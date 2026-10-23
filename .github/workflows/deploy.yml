@@ -1,0 +1,56 @@
+name: Deploy website
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'site/**'
+      - 'scripts/check_site.py'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fasthosts-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: production
+      url: https://d6studio.uk/
+    steps:
+      - name: Check out website
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Validate website
+        run: |
+          python3 scripts/check_site.py
+          node --check site/assets/js/background.js
+          node --check site/assets/js/site.js
+
+      - name: Deploy public files over encrypted FTP
+        uses: SamKirkland/FTP-Deploy-Action@110f9186c050f71550953127052e77650219c287 # v4.4.0
+        with:
+          server: ftp.fasthosts.co.uk
+          username: ${{ secrets.FASTHOSTS_FTP_USERNAME }}
+          password: ${{ secrets.FASTHOSTS_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: strict
+          local-dir: ./site/
+          # This dedicated account maps / directly to the website's HTDOCS.
+          server-dir: ./
+          dangerous-clean-slate: false
+          timeout: 60000
+          log-level: minimal
+
+      - name: Verify public files over HTTPS
+        run: python3 scripts/check_site.py --live
