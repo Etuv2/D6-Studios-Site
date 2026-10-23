@@ -1,3 +1,13 @@
+# One canonical host for search engines: send www.d6studio.uk to d6studio.uk.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^www\.d6studio\.uk$ [NC]
+    RewriteRule ^ https://d6studio.uk%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# Friendly not-found page (marked noindex) instead of the server default.
+ErrorDocument 404 /404.html
+
 # Revalidate content after deployments, including existing asset URLs.
 <IfModule mod_headers.c>
     Header set Cache-Control "no-cache"

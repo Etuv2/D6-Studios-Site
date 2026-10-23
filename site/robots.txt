@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://d6studio.uk/sitemap.xml
