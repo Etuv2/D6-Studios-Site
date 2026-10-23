@@ -98,7 +98,7 @@ ul, ol { margin: 0; padding: 0; }
 .section-head h1, .section-head h2 { font-size: max(2.2rem, min(5.4vw, 8.5vh, 4.5rem)); text-transform: uppercase; font-weight: 600; }
 .section-head p { color: var(--text-2); font-size: 1.0625rem; max-width: 62ch; margin: 0; }
 .kicker { display: flex; align-items: baseline; gap: 12px; margin: 0; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); }
-.kicker .idx { color: var(--white); }
+.kicker .idx { color: var(--white); flex: none; white-space: nowrap; }
 .label { font-family: var(--font-mono); font-size: .6875rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); }
 .lede { font-size: clamp(1.0625rem, 1.5vw, 1.25rem); color: var(--text-2); max-width: 58ch; }
 .mono { font-family: var(--font-mono); font-size: .8125rem; }
@@ -375,11 +375,14 @@ a:hover > .go, a:hover .go { background: var(--white); color: #000; border-color
 .pf-index a:hover { color: var(--white); padding-left: 6px; }
 .work-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 32px); }
 .work-grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.work-grid.cols-2 .media { aspect-ratio: 12 / 5; }
 .work { display: flex; flex-direction: column; margin: 0; }
 .work .body { padding-top: 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .work h3 { font-size: 1.5rem; letter-spacing: .02em; }
 .work p { margin: 0; color: var(--text-2); font-size: .9375rem; }
 .work .meta { font-family: var(--font-mono); font-size: .6875rem; letter-spacing: .12em; color: var(--text-3); text-transform: uppercase; }
+.work .private { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: .6875rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); padding-bottom: 3px; }
+.work .private::before { content: ""; width: 6px; height: 6px; border: 1px solid currentColor; }
 .work .links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: auto; padding-top: 8px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; }
 .chips li { padding: 3px 8px; border: 1px solid var(--line); font-family: var(--font-mono); font-size: .6875rem; letter-spacing: .04em; color: var(--text-2); }
