@@ -356,9 +356,9 @@
   }
 
   /* ---------- layer 3: quadtree ---------- */
-  // Cells keep subdividing and merging. Each change glows briefly, and a small target marker glides to it.
+  // Cells keep subdividing and merging. Each change glows briefly, and corner brackets fade in on it, then out.
   var MIN_CELL = 14;
-  var marker = { x: 0, y: 0, s: 0, tx: 0, ty: 0, ts: 0, a: 0 };
+  var markers = [];
   function node(x, y, s, d) { return { x: x, y: y, s: s, d: d, kids: null, p: 0, target: 0, glow: 0 }; }
   function split(n) {
     var h = n.s / 2;
@@ -385,10 +385,10 @@
       grow(n, r, spots[i][2] >= big ? 5 : 4);
       roots.push(n);
     }
-    if (roots.length) { var f = roots[0]; marker.x = marker.tx = f.x; marker.y = marker.ty = f.y; marker.s = marker.ts = f.s; }
+    markers = [];
   }
   function collect(n, out) { out.push(n); if (n.kids) for (var i = 0; i < 4; i++) collect(n.kids[i], out); return out; }
-  function aim(n) { marker.tx = n.x; marker.ty = n.y; marker.ts = n.s; marker.a = 1; }
+  function aim(n) { markers.push({ x: n.x, y: n.y, s: n.s, age: 0 }); }
   function treeEvent() {
     var all = [];
     for (var i = 0; i < roots.length; i++) collect(roots[i], all);
@@ -427,9 +427,7 @@
         nextTreeEvent = now + (small ? 900 : 520) + rand() * (small ? 900 : 700);
       }
       for (var i = 0; i < roots.length; i++) stepTree(roots[i], dt);
-      var k = Math.min(1, dt * 5);
-      marker.x += (marker.tx - marker.x) * k; marker.y += (marker.ty - marker.y) * k; marker.s += (marker.ts - marker.s) * k;
-      marker.a = Math.max(0.35, marker.a - dt * 0.5);
+      for (var q = markers.length - 1; q >= 0; q--) { markers[q].age += dt; if (markers[q].age > 1.9) markers.splice(q, 1); }
     }
     var inner = new Path2D(), outer = new Path2D(), ticks = new Path2D(), glowing = [];
     for (var j = 0; j < roots.length; j++) {
@@ -454,16 +452,19 @@
     ctx.stroke(inner);
     ctx.strokeStyle = 'rgba(232,236,241,0.18)';
     ctx.stroke(ticks);
-    // Target marker: four corner brackets that glide to the most recent change.
-    if (roots.length) {
-      var mx = Math.round(marker.x) + 0.5, my = Math.round(marker.y) + 0.5, ms = marker.s, pad = 4, l = Math.max(5, Math.min(10, ms * 0.25));
+    // Corner brackets on each change: fade in, hold, fade out in place. They never travel between cells.
+    for (var mi = 0; mi < markers.length; mi++) {
+      var mk = markers[mi];
+      var ma = smooth(mk.age / 0.35) * (1 - smooth((mk.age - 0.7) / 1.1));
+      if (ma <= 0.01) continue;
+      var mx = Math.round(mk.x) + 0.5, my = Math.round(mk.y) + 0.5, ms = mk.s, pad = 4, l = Math.max(5, Math.min(10, ms * 0.25));
       var x0 = mx - pad, y0 = my - pad, x1 = mx + ms + pad, y1 = my + ms + pad;
       var m = new Path2D();
       m.moveTo(x0, y0 + l); m.lineTo(x0, y0); m.lineTo(x0 + l, y0);
       m.moveTo(x1 - l, y0); m.lineTo(x1, y0); m.lineTo(x1, y0 + l);
       m.moveTo(x1, y1 - l); m.lineTo(x1, y1); m.lineTo(x1 - l, y1);
       m.moveTo(x0 + l, y1); m.lineTo(x0, y1); m.lineTo(x0, y1 - l);
-      ctx.strokeStyle = 'rgba(240,243,246,' + (0.42 * marker.a).toFixed(3) + ')';
+      ctx.strokeStyle = 'rgba(240,243,246,' + (0.42 * ma).toFixed(3) + ')';
       ctx.stroke(m);
     }
   }
